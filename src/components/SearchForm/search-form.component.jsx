@@ -130,23 +130,28 @@ class SearchForm extends Component {
     if (Object.keys(results).length && results.length) {
       return (
         <div className="results-container">
-          {results.map((result) => {
-            return (
-              <div key={result.key} className="card">
-                <h2 className="results-heading">{result.title}</h2>
-                <div className="img-container">
-                  <img
-                    src={`http://covers.openlibrary.org/b/id/${result.cover_i}.jpg`}
-                    alt="think and grow rich cover"
-                  />
+          {results
+            .filter((result) => {
+              // remove results that do not have images
+              return result.cover_i;
+            })
+            .map((result) => {
+              return (
+                <div key={result.key} className="card">
+                  <h2 className="results-heading">{result.title}</h2>
+                  <div className="img-container">
+                    <img
+                      src={`http://covers.openlibrary.org/b/id/${result.cover_i}.jpg`}
+                      alt="think and grow rich cover"
+                    />
+                  </div>
+                  <div className="author-name-first-publish-year">
+                    <p>{result.author_name}</p>
+                    <p>{result.first_publish_year}</p>
+                  </div>
                 </div>
-                <div className="author-name-first-publish-year">
-                  <p>{result.author_name}</p>
-                  <p>{result.first_publish_year}</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       );
     }
