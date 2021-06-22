@@ -13,12 +13,13 @@ class SearchForm extends Component {
 
     this.state = {
       query: "",
-      results: {},
+      results: [],
       loading: false,
       totalResults: 0,
       totalPages: 0,
       currentPageNo: 0,
       message: "",
+      sortBy: "",
     };
 
     this.cancel = "";
@@ -51,7 +52,7 @@ class SearchForm extends Component {
         cancelToken: this.cancel.token,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.docs);
         const total = res.data.numFound; // get the total number of pages returned
         const totalPagesCount = this.getPageCount(total, 20); //the denominator is 5. meaning I want to show 5 results per page
 
@@ -81,9 +82,11 @@ class SearchForm extends Component {
       });
   };
 
-  // fn used to prevent load from loading after submission
-  handleSubmit = (event) => {
+  // fn used to sort title, alphabetically and recently published
+  handleSort = (event) => {
     event.preventDefault();
+    const optionValue = event.target.value;
+    this.setState({ sortBy: optionValue });
   };
 
   // fn used to handle the search input value
@@ -93,7 +96,7 @@ class SearchForm extends Component {
     if (!query) {
       this.setState({
         query,
-        results: {},
+        results: [],
         message: "",
         totalPages: 0,
         totalResults: 0,
@@ -121,18 +124,25 @@ class SearchForm extends Component {
       });
     }
   };
-
   // fn to pull results out of the state and render the results
+
   displaySearchResults = () => {
-    const { results } = this.state;
+    const { results = [], sortBy } = this.state;
+
+    const sortCriteria = {
+      alphabet: (a, b) => a.title.localeCompare(b.title),
+      recentlyPublished: (a, b) => b.first_publish_year - a.first_publish_year,
+    };
+    console.log(results);
+    const sortedResults = sortBy ? results.sort(sortCriteria[sortBy]) : results;
 
     // Check if results is not empty
-    if (Object.keys(results).length && results.length) {
+    if (Object.keys(sortedResults).length && sortedResults.length) {
       return (
         <div className="results-container">
-          {results
+          {sortedResults
             .filter((result) => {
-              // remove results that do not have images
+              // remove cards that do not have images
               return result.cover_i;
             })
             .map((result) => {
@@ -142,7 +152,7 @@ class SearchForm extends Component {
                   <div className="img-container">
                     <img
                       src={`http://covers.openlibrary.org/b/id/${result.cover_i}.jpg`}
-                      alt="think and grow rich cover"
+                      alt={`${result.cover_i} cover`}
                     />
                   </div>
                   <div className="author-name-first-publish-year">
@@ -160,12 +170,13 @@ class SearchForm extends Component {
   // Render search results function should be here...
   render() {
     const { query, loading, message, currentPageNo, totalPages } = this.state;
-    const showPrevLink = 1 < currentPageNo;
-    const showNextLink = totalPages > currentPageNo;
+    const showPrevLink = query && 1 < currentPageNo;
+    const showNextLink = query && totalPages > currentPageNo;
+
     return (
       <>
         <div className="wrapper">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={(event) => event.preventDefault()}>
             <div className="search-by-title">
               <label htmlFor="search-input">Search By Title</label>
               <input
@@ -183,12 +194,12 @@ class SearchForm extends Component {
               <label htmlFor="sort">
                 Sort By Alphabet or Recently Published
               </label>
-              <select name="sort" id="">
+              <select name="sort" id="" onChange={this.handleSort}>
                 <option value="" default>
                   Select one
                 </option>
-                <option value="By Alphabet">By Alphabet</option>
-                <option value="Recently Published">Recently Published</option>
+                <option value="alphabet">By Alphabet</option>
+                <option value="recentlyPublished">Recently Published</option>
               </select>
             </div>
           </form>
