@@ -2,8 +2,15 @@ form {
   text-align: center;
   padding-top: 3rem;
   .search-by-title {
+    position: relative;
     margin-bottom: 2rem;
-    
+
+    .search-icon {
+      position: absolute;
+      top: 38px;
+      right: 10px;
+      color: #555;
+    }
   }
 
   .sort-results {
@@ -11,7 +18,9 @@ form {
 
   label {
     color: #3a3535;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    line-height: 23px;
     font-weight: 600;
   }
 
@@ -21,10 +30,74 @@ form {
     margin-bottom: 1rem;
     outline: none;
     border: none;
-    padding: 0.3rem 0.8rem;
+    padding: 0.7rem 0.8rem;
     border: 2px solid #f1f1f1;
     width: 100%;
   }
 
+  input::placeholder {
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+}
 
+// Loader
+/* Loader */
+.search-loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100px;
+}
+
+/* Show and hide the loader*/
+.show {
+  display: inline-block;
+}
+
+.hide {
+  display: none;
+}
+
+// Card
+.results-container {
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+
+  color: #565353;
+
+  .card {
+    border: 2px solid #898989;
+    padding: 0.7rem 1rem;
+    background: #f1f1f1;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+
+    .results-heading {
+      text-align: center;
+      font-size: 1.4rem;
+    }
+
+    .img-container {
+      border: 1px solid #898989;
+      box-shadow: 2px 2px 2px #898989;
+      min-width: 200px;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+    }
+
+    .author-name-first-publish-year {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  }
 }
