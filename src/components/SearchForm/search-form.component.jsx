@@ -124,7 +124,7 @@ class SearchForm extends Component {
 
             <div className="sort-results">
               <label htmlFor="sort">
-                Sort By Alphabelt or Recently Published
+                Sort By Alphabet or Recently Published
               </label>
               <select name="sort" id="">
                 <option value="By Alphabet">By Alphabet</option>
@@ -132,6 +132,7 @@ class SearchForm extends Component {
               </select>
             </div>
           </form>
+
           {/* Error Message should be here */}
           {message && <p className="message">{message}</p>}
 
