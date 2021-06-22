@@ -1,0 +1,30 @@
+form {
+  text-align: center;
+  padding-top: 3rem;
+  .search-by-title {
+    margin-bottom: 2rem;
+    
+  }
+
+  .sort-results {
+  }
+
+  label {
+    color: #3a3535;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  input,
+  select {
+    margin-top: 0.8rem;
+    margin-bottom: 1rem;
+    outline: none;
+    border: none;
+    padding: 0.3rem 0.8rem;
+    border: 2px solid #f1f1f1;
+    width: 100%;
+  }
+
+
+}

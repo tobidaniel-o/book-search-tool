@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "../src/components/Header/header.component";
+
+import "../src/styles/setup.css";
+import "../src/styles/App.scss";
+import SearchForm from "./components/SearchForm/search-form.component";
 
 function App() {
+  const param = "think and grow rich";
+  useEffect(() => {
+    axios({
+      url: `http://openlibrary.org/search.json?q=${param}&page=1`,
+      method: "GET",
+      dataResponse: "json",
+      params: {
+        format: "json",
+      },
+    }).then((response) => {
+      console.log(response.data.docs);
+    });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <SearchForm />
+    </>
   );
 }
 
