@@ -179,7 +179,7 @@ class SearchForm extends Component {
                 Sort By Alphabet or Recently Published
               </label>
               <select name="sort" id="">
-                <option value="" selected="selected" disabled>
+                <option value="" default>
                   Select one
                 </option>
                 <option value="By Alphabet">By Alphabet</option>
