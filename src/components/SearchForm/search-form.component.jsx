@@ -52,12 +52,10 @@ class SearchForm extends Component {
         cancelToken: this.cancel.token,
       })
       .then((res) => {
-        console.log(res.data.docs);
         const total = res.data.numFound; // get the total number of pages returned
         const totalPagesCount = this.getPageCount(total, 20); //the denominator is 5. meaning I want to show 5 results per page
 
-        console.log("total => " + total);
-        console.log("totalPagesCount => " + totalPagesCount);
+
 
         const resultNotFoundMessage = !res.data.docs.length
           ? "There are no more search results. Please try a new search."
@@ -133,7 +131,6 @@ class SearchForm extends Component {
       alphabet: (a, b) => a.title.localeCompare(b.title),
       recentlyPublished: (a, b) => b.first_publish_year - a.first_publish_year,
     };
-    console.log(results);
     const sortedResults = sortBy ? results.sort(sortCriteria[sortBy]) : results;
 
     // Check if results is not empty
