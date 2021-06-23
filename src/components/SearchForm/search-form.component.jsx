@@ -191,13 +191,13 @@ class SearchForm extends Component {
 
               <div className="sort-results">
                 <label htmlFor="sort">
-                  Sort Book By Alphabet or Recently Dated
+                  Sort Alphabetically or Recently published
                 </label>
                 <select name="sort" id="" onChange={this.handleSort}>
                   <option value="" default>
                     Select one
                   </option>
-                  <option value="alphabet">By Alphabet</option>
+                  <option value="alphabet">Alphabetically</option>
                   <option value="recentlyPublished">Recently Published</option>
                 </select>
               </div>
