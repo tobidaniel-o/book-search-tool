@@ -118,12 +118,14 @@ form {
       p {
         margin: 0;
         font-style: italic;
-        line-height: 20px;
+      
+        line-height: 30px;
 
         span {
           font-size: 0.9rem;
-          font-weight: normal;
+           font-weight: bold;
           font-style: normal;
+          margin-left: 0.7rem;
         }
       }
     }
