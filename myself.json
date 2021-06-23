@@ -1,0 +1,128 @@
+{
+  "name": {
+    "firstName": "Oluwatobi",
+    "lastName": "Okunuga",
+    "alias": "Tobi"
+  },
+  "gender": "Male",
+  "address": "Toronto, ON, Canada",
+
+  "version": "35.06",
+
+  "profession": [
+    "Front-End Engineer",
+    "Front-End Developer",
+    "Javascript Developer",
+    "React Developer",
+    "Web Developer",
+    "HTML5/CSS3 Developer"
+  ],
+
+  "summary": "Innovative Front-End Developer with 3+ years of experience building and maintaining responsive websites in the service industry. Proficient in HTML, CSS, JavaScript plus modern libraries and frameworks. Passionate about usability and accessibility.",
+
+  "contact": {
+    "cellPhone": "416-844-4437",
+    "email": "tobi.daniel2018@gmail.com",
+    "website": "https://tobiokunuga.dev",
+    "github": "https://github.com/tobidaniel-o",
+    "linkedin": "https//linkedin.com/tobi-okunuga"
+  },
+
+  "skillSets": [
+    "HTML5",
+    "CSS3",
+    "SCSS",
+    "Firebase",
+    "JavaScript",
+    "React",
+    "Redux",
+    "Agile Methodology",
+    "Pair programming",
+    "Customer service",
+    "Analytical",
+    "Problem solving",
+    "Team player",
+    "Scrum",
+    "Web Accessibility",
+    "Jest",
+    "Version Control",
+    "Responsive Design",
+    "RESTful API",
+    "jQuery",
+    "Bootstrap",
+    "Browser Testing",
+    "SEO Optimization",
+    "Node.js"
+  ],
+
+  "familiarity": ["python"],
+
+  "workExperience": [
+    {
+      "role": "Front-End Engineer",
+      "company": "Rogers Media (TSC)",
+      "companyAddress": "Toronto GTA, ON, Canada",
+      "date": {
+        "startDate": "May 2019",
+        "endDate": "to present"
+      },
+      "jobFunctions": [
+        "Collaborated with project managers, product designers using Agile methodology to define, design and develop the front-end web application using Vanilla JS, React, Redux, GraphQL, Firebase and integrated Stripe for payment.",
+
+        "Significantly improved page loading speeds by lazy loading assets and deferring API calls which resulted in boosting the conversion rate by 80%.",
+
+        "Created modular, responsive templates using modern CSS techniques and JavaScript libraries",
+
+        "Recommended solutions for a streamlined, user friendly interface with the design team."
+      ]
+    },
+
+    {
+      "role": "Junior Software Engineer",
+      "company": "Ikeja Electric Plc",
+      "companyAddress": "Lagos, Nigeria",
+      "date": {
+        "startDate": "March 2018",
+        "endDate": "April 2019"
+      },
+      "jobFunctions": [
+        "Fixed a lot of accessibility issues.",
+
+        "Fixed bugs and improved overall application performance leading to over 25% increase in revenue.",
+
+        "Worked with the team and using a new JavaScript framework to develop and ship new features before the required deadline."
+      ]
+    },
+
+    {
+      "role": "Technical Support Analyst",
+      "company": "Ikeja Electric Plc",
+      "companyAddress": "Lagos, Nigeria",
+      "date": {
+        "startDate": "April 2017",
+        "endDate": "February 2018"
+      },
+      "jobFunctions": [
+        "Increased end-users’ productivity by providing technical assistance.",
+
+        "Increased company revenue by decreasing downtime by 30%.",
+
+        "Resolved incidents or maintenance activities working with other support groups, such as the network operations."
+      ]
+    }
+  ],
+
+  "academicBackground": [
+    {
+      "courseOfStudy": "Bsc Computer Science",
+      "school": "Olabisi Onabanjo University, Nigeria",
+      "date": "2004 - 2008"
+    },
+
+    {
+      "courseOfStudy": "Full Stack Development",
+      "school": "FreeCodeCamp.org",
+      "date": "2015 - to present"
+    }
+  ]
+}
