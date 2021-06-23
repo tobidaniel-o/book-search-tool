@@ -10,23 +10,21 @@ function PageNavigation({
 }) {
   return (
     <div className="nav-link-container">
-      <a
-        href="#"
+      <button
         className={`nav-link ${showPrevLink ? "show" : "hide"}
         ${loading ? "greyed-out" : ""}`}
         onClick={handlePrevClick}
       >
         Prev
-      </a>
-      <a
-        href="#"
+      </button>
+      <button
         className={`nav-link ${showNextLink ? "show" : "hide"}
       ${loading ? "greyed-out" : ""}
       `}
         onClick={handleNextClick}
       >
         Next
-      </a>
+      </button>
     </div>
   );
 }
