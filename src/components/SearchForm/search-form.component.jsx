@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Loader from "../../loader.gif";
-import PageNavigation from "../PageNavigation/page-navigation.component";
+import Pagination from "../Pagination/pagination.component";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -105,8 +105,8 @@ class SearchForm extends Component {
     }
   };
 
-  // fn to handle page click
-  handlePageClick = (type, event) => {
+  // fn to handle pagination
+  handlePagination = (type, event) => {
     event.preventDefault();
     // Prev is if user is on page 2, and needs to go to page 1, then this.state.currentPageNo - 1, else Next - this.state.currentPageNo + 1
     const updatedPageNo =
@@ -115,14 +115,13 @@ class SearchForm extends Component {
         : this.state.currentPageNo + 1;
 
     if (!this.state.loading) {
-      //loading value should be false
       this.setState({ loading: true, message: "" }, () => {
         this.getSearchResults(updatedPageNo, this.state.query);
       });
     }
   };
-  // fn to pull results out of the state and render the results
 
+  // fn to pull results out of the state
   displaySearchResults = () => {
     const { results = [], sortBy } = this.state;
 
@@ -165,7 +164,6 @@ class SearchForm extends Component {
     }
   };
 
-  // Render search results function should be here...
   render() {
     const { query, loading, message, currentPageNo, totalPages } = this.state;
     const showPrevLink = query && 1 < currentPageNo;
@@ -204,35 +202,35 @@ class SearchForm extends Component {
             </form>
           </div>
 
-          {/* Error Message should be here */}
+          {/* Error Message*/}
           {message && <p className="message">{message}</p>}
 
-          {/* Load should be here too */}
+          {/* Loader*/}
           <img
             src={Loader}
             className={`search-loading ${loading ? "show" : "hide"}`}
             alt="Search loader"
           />
 
-          {/* Navigation */}
-          <PageNavigation
+          {/* Page navigation */}
+          <Pagination
             loading={loading}
             showPrevLink={showPrevLink}
             showNextLink={showNextLink}
-            handlePrevClick={(event) => this.handlePageClick("prev", event)}
-            handleNextClick={(event) => this.handlePageClick("next", event)}
+            handlePrevClick={(event) => this.handlePagination("prev", event)}
+            handleNextClick={(event) => this.handlePagination("next", event)}
           />
 
           {/* Results */}
           {this.displaySearchResults()}
 
-          {/* Navigation */}
-          <PageNavigation
+          {/* Page navigation */}
+          <Pagination
             loading={loading}
             showPrevLink={showPrevLink}
             showNextLink={showNextLink}
-            handlePrevClick={(event) => this.handlePageClick("prev", event)}
-            handleNextClick={(event) => this.handlePageClick("next", event)}
+            handlePrevClick={(event) => this.handlePagination("prev", event)}
+            handleNextClick={(event) => this.handlePagination("next", event)}
           />
         </div>
       </>

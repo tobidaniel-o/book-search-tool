@@ -1,7 +1,7 @@
 import React from "react";
-import "./page-navigation.styles.scss";
+import "./pagination.styles.scss";
 
-function PageNavigation({
+function Pagination({
   loading,
   showPrevLink,
   showNextLink,
@@ -29,4 +29,4 @@ function PageNavigation({
   );
 }
 
-export default PageNavigation;
+export default Pagination;
