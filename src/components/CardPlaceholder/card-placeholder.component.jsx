@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-function CardPlaceholder({title, author_name, first_publish_year,cover_i}) {
+function CardPlaceholder({ title, author_name, first_publish_year, cover_i }) {
   return (
     <>
       <h2 className="results-heading">{title}</h2>
@@ -11,11 +11,15 @@ function CardPlaceholder({title, author_name, first_publish_year,cover_i}) {
         />
       </div>
       <div className="author-name-first-publish-year">
-        <p>{author_name}</p>
-        <p>{first_publish_year}</p>
+        <p>
+          Author: <span> {author_name}</span>
+        </p>
+        <p>
+          Published Date: <span> {first_publish_year}</span>
+        </p>
       </div>
     </>
   );
 }
 
-export default CardPlaceholder
+export default CardPlaceholder;

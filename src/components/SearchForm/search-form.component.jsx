@@ -137,8 +137,9 @@ class SearchForm extends Component {
       return (
         <div className="results-container">
           {sortedResults
+
             .filter((result) => {
-              // remove cards that do not have images
+              // remove cards that do not have images, author name and publish year
               return (
                 result.cover_i &&
                 result.first_publish_year &&
