@@ -38,10 +38,6 @@
     "Redux",
     "Agile Methodology",
     "Pair programming",
-    "Customer service",
-    "Analytical",
-    "Problem solving",
-    "Team player",
     "Scrum",
     "Web Accessibility",
     "Jest",
@@ -53,6 +49,24 @@
     "Browser Testing",
     "SEO Optimization",
     "Node.js"
+  ],
+
+  "personality": [
+    "Friendly",
+    "Growth mindset",
+    "Team player",
+    "Adaptability",
+    "Fast learner",
+    "Not ashamed to ask the silliest questions",
+    "Amiable",
+    "Ability to work independently with little or no supervision",
+    "Take initiative",
+    "Ready to go above and beyond",
+    "Humility",
+    "Empathy",
+    "Analytical",
+    "Problem solver",
+    "Team player"
   ],
 
   "familiarity": ["python"],
