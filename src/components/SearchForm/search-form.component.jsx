@@ -37,7 +37,7 @@ class SearchForm extends Component {
   // fn used for pagination.
   getSearchResults = (updatedPageNo = "", query) => {
     const pageNumber = updatedPageNo ? `&page=${updatedPageNo}` : "";
-    const searchUrl = ` http://openlibrary.org/search.json?q=${query}${pageNumber}`;
+    const searchUrl = ` https://openlibrary.org/search.json?q=${query}${pageNumber}`;
 
     // Create a token
     // check if this.cancel has any value, if it has, cancel the previous request
