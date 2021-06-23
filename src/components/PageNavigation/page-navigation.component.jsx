@@ -1,14 +1,13 @@
 import React from "react";
 import "./page-navigation.styles.scss";
 
-function PageNavigation(props) {
-  const {
-    loading,
-    showPrevLink,
-    showNextLink,
-    handlePrevClick,
-    handleNextClick,
-  } = props;
+function PageNavigation({
+  loading,
+  showPrevLink,
+  showNextLink,
+  handlePrevClick,
+  handleNextClick,
+}) {
   return (
     <div className="nav-link-container">
       <a

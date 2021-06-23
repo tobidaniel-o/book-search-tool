@@ -6,6 +6,7 @@ import PageNavigation from "../PageNavigation/page-navigation.component";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./search-form.styles.scss";
+import CardPlaceholder from "../CardPlaceholder/card-placeholder.component";
 
 class SearchForm extends Component {
   constructor(props) {
@@ -54,8 +55,6 @@ class SearchForm extends Component {
       .then((res) => {
         const total = res.data.numFound; // get the total number of pages returned
         const totalPagesCount = this.getPageCount(total, 20); //the denominator is 5. meaning I want to show 5 results per page
-
-
 
         const resultNotFoundMessage = !res.data.docs.length
           ? "There are no more search results. Please try a new search."
@@ -140,22 +139,23 @@ class SearchForm extends Component {
           {sortedResults
             .filter((result) => {
               // remove cards that do not have images
-              return result.cover_i;
+              return (
+                result.cover_i &&
+                result.first_publish_year &&
+                result.author_name
+              );
             })
             .map((result) => {
+              const { key, title, cover_i, author_name, first_publish_year } =
+                result;
               return (
-                <div key={result.key} className="card">
-                  <h2 className="results-heading">{result.title}</h2>
-                  <div className="img-container">
-                    <img
-                      src={`http://covers.openlibrary.org/b/id/${result.cover_i}.jpg`}
-                      alt={`${result.cover_i} cover`}
-                    />
-                  </div>
-                  <div className="author-name-first-publish-year">
-                    <p>{result.author_name}</p>
-                    <p>{result.first_publish_year}</p>
-                  </div>
+                <div key={key} className="card">
+                  <CardPlaceholder
+                    title={title}
+                    cover_i={cover_i}
+                    author_name={author_name}
+                    first_publish_year={first_publish_year}
+                  />
                 </div>
               );
             })}
@@ -173,33 +173,35 @@ class SearchForm extends Component {
     return (
       <>
         <div className="wrapper">
-          <form onSubmit={(event) => event.preventDefault()}>
-            <div className="search-by-title">
-              <label htmlFor="search-input">Search By Title</label>
-              <input
-                type="text"
-                name="query"
-                value={query}
-                id="search-input"
-                placeholder="Search..."
-                onChange={this.handleOnInputChange}
-              />
-              <FontAwesomeIcon icon={faSearch} className="search-icon" />
-            </div>
+          <div className="form-container">
+            <form onSubmit={(event) => event.preventDefault()}>
+              <div className="search-by-title">
+                <label htmlFor="search-input">Search By Title</label>
+                <input
+                  type="text"
+                  name="query"
+                  value={query}
+                  id="search-input"
+                  placeholder=" (ex. The Great Gatsby)"
+                  onChange={this.handleOnInputChange}
+                />
+                <FontAwesomeIcon icon={faSearch} className="search-icon" />
+              </div>
 
-            <div className="sort-results">
-              <label htmlFor="sort">
-                Sort By Alphabet or Recently Published
-              </label>
-              <select name="sort" id="" onChange={this.handleSort}>
-                <option value="" default>
-                  Select one
-                </option>
-                <option value="alphabet">By Alphabet</option>
-                <option value="recentlyPublished">Recently Published</option>
-              </select>
-            </div>
-          </form>
+              <div className="sort-results">
+                <label htmlFor="sort">
+                  Sort Book By Alphabet or Recently Dated
+                </label>
+                <select name="sort" id="" onChange={this.handleSort}>
+                  <option value="" default>
+                    Select one
+                  </option>
+                  <option value="alphabet">By Alphabet</option>
+                  <option value="recentlyPublished">Recently Published</option>
+                </select>
+              </div>
+            </form>
+          </div>
 
           {/* Error Message should be here */}
           {message && <p className="message">{message}</p>}

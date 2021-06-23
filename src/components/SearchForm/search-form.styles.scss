@@ -5,15 +5,16 @@ form {
     position: relative;
     margin-bottom: 2rem;
 
+    .example {
+      font-size: 0.6rem;
+    }
+
     .search-icon {
       position: absolute;
       top: 50px;
       right: 10px;
       color: #555;
     }
-  }
-
-  .sort-results {
   }
 
   label {
@@ -30,11 +31,22 @@ form {
     margin-bottom: 1rem;
     outline: none;
     border: none;
-    padding: 0.7rem 0.8rem;
+    
     border: 2px solid #f1f1f1;
     width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 
+  input {
+    padding: 0.7rem 0.8rem;
+  }
+
+  select {
+    padding: 0.8rem 0.8rem;
+    border-radius: 0;
+  }
   input::placeholder {
     font-style: italic;
     font-size: 0.9rem;
@@ -103,4 +115,38 @@ form {
   }
 }
 
+@media screen and (min-width: 768px) {
+  form {
+    display: flex;
+    text-align: left;
 
+    label {
+      font-size: 1.1rem;
+    }
+
+    .sort-results {
+      margin-left: 1rem;
+    }
+    input {
+      padding: 0.8rem 0.8rem;
+    }
+  }
+
+  .results-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .search-by-title,
+  .sort-results {
+    width: 50%;
+  }
+  .results-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px 20px;
+  }
+}
