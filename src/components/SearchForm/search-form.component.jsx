@@ -105,7 +105,7 @@ class SearchForm extends Component {
     }
   };
 
-  // fn to handle page click
+  // fn to handle page click on Prev and Next button
   handlePageClick = (type, event) => {
     event.preventDefault();
     // Prev is if user is on page 2, and needs to go to page 1, then this.state.currentPageNo - 1, else Next - this.state.currentPageNo + 1
@@ -162,10 +162,10 @@ class SearchForm extends Component {
             })}
         </div>
       );
-    }
+    } 
   };
 
-  // Render search results function should be here...
+  // Render search results...
   render() {
     const { query, loading, message, currentPageNo, totalPages } = this.state;
     const showPrevLink = query && 1 < currentPageNo;
