@@ -170,8 +170,8 @@ class SearchForm extends Component {
     const showNextLink = query && totalPages > currentPageNo;
 
     return (
-      <>
-        <div className="wrapper">
+      <div data-testid="searchForm-1">
+        <div className="wrapper" >
           <div className="form-container">
             <form onSubmit={(event) => event.preventDefault()}>
               <div className="search-by-title">
@@ -233,7 +233,7 @@ class SearchForm extends Component {
             handleNextClick={(event) => this.handlePagination("next", event)}
           />
         </div>
-      </>
+      </div>
     );
   }
 }
