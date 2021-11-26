@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import Header from "../Header/header.component";
-import SearchForm from "../SearchForm/search-form.component";
+import Header from "../Header/Header";
+import SearchForm from "../SearchForm/SearchForm";
 
 class BookSearch extends Component {
   render() {

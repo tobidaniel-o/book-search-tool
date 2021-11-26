@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Loader from "../../loader.gif";
-import Pagination from "../Pagination/pagination.component";
+import Pagination from "../Pagination/Pagination";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./search-form.styles.scss";
-import CardPlaceholder from "../CardPlaceholder/card-placeholder.component";
+import CardPlaceholder from "../CardPlaceholder/CardPlaceholder";
 
 class SearchForm extends Component {
   constructor(props) {
