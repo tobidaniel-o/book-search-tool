@@ -127,34 +127,32 @@ class SearchForm extends Component {
 
     const sortCriteria = {
       alphabet: (a, b) => a.title.localeCompare(b.title),
-      recentlyPublished: (a, b) => b.first_publish_year - a.first_publish_year,
+      recentlyPublished: (a, b) => b.firstPublishYear - a.firstPublishYear,
     };
     const sortedResults = sortBy ? results.sort(sortCriteria[sortBy]) : results;
 
     // Check if results is not empty
     if (Object.keys(sortedResults).length && sortedResults.length) {
       return (
-        <div className="results-container">
+        <div className="resultsContainer">
           {sortedResults
 
             .filter((result) => {
               // remove cards that do not have images, author name and publish year
               return (
-                result.cover_i &&
-                result.first_publish_year &&
-                result.author_name
+                result.cover && result.firstPublishYear && result.authorName
               );
             })
             .map((result) => {
-              const { key, title, cover_i, author_name, first_publish_year } =
+              const { key, title, cover, authorName, firstPublishYear } =
                 result;
               return (
                 <div key={key} className="card">
                   <CardPlaceholder
                     title={title}
-                    cover_i={cover_i}
-                    author_name={author_name}
-                    first_publish_year={first_publish_year}
+                    cover={cover}
+                    authorName={authorName}
+                    firstPublishYear={firstPublishYear}
                   />
                 </div>
               );
@@ -171,11 +169,11 @@ class SearchForm extends Component {
 
     return (
       <div data-testid="searchForm-1">
-        <div className="wrapper" >
-          <div className="form-container">
+        <div className="wrapper">
+          <div className="formContainer">
             <form onSubmit={(event) => event.preventDefault()}>
-              <div className="search-by-title">
-                <label htmlFor="search-input">Search By Title</label>
+              <div className="searchByTitle">
+                <label htmlFor="searchInput">Search By Title</label>
                 <input
                   type="text"
                   name="query"
@@ -184,10 +182,10 @@ class SearchForm extends Component {
                   placeholder=" (ex. The Great Gatsby)"
                   onChange={this.handleOnInputChange}
                 />
-                <FontAwesomeIcon icon={faSearch} className="search-icon" />
+                <FontAwesomeIcon icon={faSearch} className="searchIcon" />
               </div>
 
-              <div className="sort-results">
+              <div className="sortResults">
                 <label htmlFor="sort">
                   Sort Alphabetically or Recently published
                 </label>
@@ -208,7 +206,7 @@ class SearchForm extends Component {
           {/* Loader*/}
           <img
             src={Loader}
-            className={`search-loading ${loading ? "show" : "hide"}`}
+            className={`searchLoading ${loading ? "show" : "hide"}`}
             alt="Search loader"
           />
 

@@ -9,17 +9,17 @@ function Pagination({
   handleNextClick,
 }) {
   return (
-    <div className="nav-link-container">
+    <div className="navLinkContainer">
       <button
-        className={`nav-link ${showPrevLink ? "show" : "hide"}
-        ${loading ? "greyed-out" : ""}`}
+        className={`navLink ${showPrevLink ? "show" : "hide"}
+        ${loading ? "greyedOut" : ""}`}
         onClick={handlePrevClick}
       >
         Prev
       </button>
       <button
-        className={`nav-link ${showNextLink ? "show" : "hide"}
-      ${loading ? "greyed-out" : ""}
+        className={`navLink ${showNextLink ? "show" : "hide"}
+      ${loading ? "greyedOut" : ""}
       `}
         onClick={handleNextClick}
       >

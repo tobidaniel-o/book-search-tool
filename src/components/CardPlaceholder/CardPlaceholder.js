@@ -1,21 +1,21 @@
 import React from "react";
 
-function CardPlaceholder({ title, author_name, first_publish_year, cover_i }) {
+function CardPlaceholder({ title, authorName, firstPublishYear, cover }) {
   return (
     <>
-      <h2 className="results-heading">{title}</h2>
-      <div className="img-container">
+      <h2 className="resultsHeading">{title}</h2>
+      <div className="imgContainer">
         <img
-          src={`http://covers.openlibrary.org/b/id/${cover_i}.jpg`}
+          src={`http://covers.openlibrary.org/b/id/${cover}.jpg`}
           alt={`${title}'s cover`}
         />
       </div>
-      <div className="author-name-first-publish-year">
+      <div className="authorNameFirstPublishYear">
         <p>
-          Author: <span> {author_name}</span>
+          Author: <span> {authorName}</span>
         </p>
         <p>
-          Published Date: <span> {first_publish_year}</span>
+          Published Date: <span> {firstPublishYear}</span>
         </p>
       </div>
     </>

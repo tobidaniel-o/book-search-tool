@@ -1,7 +1,7 @@
 form {
   text-align: center;
   padding-top: 3rem;
-  .search-by-title {
+  .searchByTitle {
     position: relative;
     margin-bottom: 2rem;
 
@@ -9,7 +9,7 @@ form {
       font-size: 0.6rem;
     }
 
-    .search-icon {
+    .searchIcon {
       position: absolute;
       top: 50px;
       right: 10px;
@@ -55,7 +55,7 @@ form {
 
 // Loader
 /* Loader */
-.search-loading {
+.searchLoading {
   position: absolute;
   left: 0;
   right: 0;
@@ -73,7 +73,7 @@ form {
 }
 
 // Card
-.results-container {
+.resultsContainer {
   display: flex;
   flex-direction: column;
   flex-flow: wrap;
@@ -88,12 +88,12 @@ form {
     border-radius: 5px;
     width: 100%;
 
-    .results-heading {
+    .resultsHeading {
       text-align: center;
       font-size: 1.4rem;
     }
 
-    .img-container {
+    .imgContainer {
       border: 1px solid #898989;
       box-shadow: 2px 2px 2px #898989;
       min-width: 200px;
@@ -106,7 +106,7 @@ form {
       }
     }
 
-    .author-name-first-publish-year {
+    .authorNameFirstPublishYear {
       display: flex;
       justify-content:  center;
       flex-direction: column;
@@ -141,7 +141,7 @@ form {
       font-size: 1.1rem;
     }
 
-    .sort-results {
+    .sortResults {
       margin-left: 1rem;
     }
     input {
@@ -149,7 +149,7 @@ form {
     }
   }
 
-  .results-container {
+  .resultsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px 20px;
@@ -157,11 +157,11 @@ form {
 }
 
 @media screen and (min-width: 1024px) {
-  .search-by-title,
-  .sort-results {
+  .searchByTitle,
+  .sortResults {
     width: 50%;
   }
-  .results-container {
+  .resultsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px 20px;

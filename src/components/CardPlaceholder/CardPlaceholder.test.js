@@ -7,9 +7,9 @@ test("renders the CardPlaceholder's components.", () => {
   const { getByText, getByAltText } = render(
     <CardPlaceholder
       title="title"
-      author_name="Author name"
-      first_publish_year="Published year"
-      cover_i="cover"
+      authorName="Author name"
+      firstPublishYear="Published year"
+      cover="cover"
     />
   );
   expect(getByText("title")).toBeInTheDocument();
