@@ -127,7 +127,7 @@ class SearchForm extends Component {
 
     const sortCriteria = {
       alphabet: (a, b) => a.title.localeCompare(b.title),
-      recentlyPublished: (a, b) => b.firstPublishYear - a.firstPublishYear,
+      recentlyPublished: (a, b) => b.first_publish_year - a.first_publish_year,
     };
     const sortedResults = sortBy ? results.sort(sortCriteria[sortBy]) : results;
 
@@ -140,19 +140,19 @@ class SearchForm extends Component {
             .filter((result) => {
               // remove cards that do not have images, author name and publish year
               return (
-                result.cover && result.firstPublishYear && result.authorName
+                result.cover_i && result.first_publish_year && result.author_name
               );
             })
             .map((result) => {
-              const { key, title, cover, authorName, firstPublishYear } =
+              const { key, title, cover_i, author_name, first_publish_year } =
                 result;
               return (
                 <div key={key} className="card">
                   <CardPlaceholder
                     title={title}
-                    cover={cover}
-                    authorName={authorName}
-                    firstPublishYear={firstPublishYear}
+                    cover={cover_i}
+                    authorName={author_name}
+                    firstPublishYear={first_publish_year}
                   />
                 </div>
               );
@@ -173,7 +173,7 @@ class SearchForm extends Component {
           <div className="formContainer">
             <form onSubmit={(event) => event.preventDefault()}>
               <div className="searchByTitle">
-                <label htmlFor="searchInput">Search By Title</label>
+                <label htmlFor="searchInput">Type a book title to search</label>
                 <input
                   type="text"
                   name="query"
