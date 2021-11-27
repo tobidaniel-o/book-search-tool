@@ -1,5 +1,5 @@
 import React from "react";
-import "./pagination.styles.scss";
+import "./Pagination.scss";
 
 function Pagination({
   loading,

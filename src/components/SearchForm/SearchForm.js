@@ -5,7 +5,7 @@ import Pagination from "../Pagination/Pagination";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import "./search-form.styles.scss";
+import "./SearchForm.scss";
 import CardPlaceholder from "../CardPlaceholder/CardPlaceholder";
 
 class SearchForm extends Component {
