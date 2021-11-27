@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import SearchForm from "./search-form.component";
+import SearchForm from "./SearchForm";
 
 test("Searches for the books by entering the input value.", () => {
   render(<SearchForm />);
