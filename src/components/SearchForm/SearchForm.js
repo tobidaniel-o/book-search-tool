@@ -170,7 +170,7 @@ class SearchForm extends Component {
       <div data-testid="searchForm-1">
         <div className="wrapper">
           <div className="formContainer">
-            <form onSubmit={(event) => event.preventDefault()}>
+            <div className="form">
               <div className="searchByTitle">
                 <label htmlFor="searchInput">Type a book title to search</label>
                 <input
@@ -196,7 +196,7 @@ class SearchForm extends Component {
                   <option value="recentlyPublished">Recently Published</option>
                 </select>
               </div>
-            </form>
+            </div>
           </div>
 
           {/* Error Message*/}
