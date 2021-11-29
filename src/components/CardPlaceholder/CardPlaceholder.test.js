@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import "@testing-library/jest-dom";
+
 import CardPlaceholder from "./CardPlaceholder";
 
 test("renders the CardPlaceholder's components.", () => {

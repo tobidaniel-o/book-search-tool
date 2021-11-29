@@ -15,7 +15,7 @@ function Pagination({
         ${loading ? "greyedOut" : ""}`}
         onClick={handlePrevClick}
       >
-        Prev
+        Previous
       </button>
       <button
         className={`navLink ${showNextLink ? "show" : "hide"}

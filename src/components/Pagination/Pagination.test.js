@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
+
 import Pagination from "./Pagination";
 
 describe("Pagination component", () => {
@@ -17,7 +17,7 @@ describe("Pagination component", () => {
         handleNextClick={handleNextClick}
       />
     );
-    fireEvent.click(getByText("Prev"));
+    fireEvent.click(getByText("Previous"));
     expect(handlePrevClick).toHaveBeenCalledTimes(1);
 
     fireEvent.click(getByText("Next"));

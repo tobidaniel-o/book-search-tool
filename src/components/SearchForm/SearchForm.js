@@ -26,7 +26,7 @@ class SearchForm extends Component {
     this.cancel = "";
   }
 
-  // fn to get how many pages are there
+  // fn gets the number of pages
   getPageCount = (total, denominator) => {
     // check if the total is divisible by denominator
     const divisible = 0 === total % denominator;
@@ -35,9 +35,8 @@ class SearchForm extends Component {
   };
 
   // fn used for pagination.
-  getSearchResults = (updatedPageNo = "", query) => {
-    const pageNumber = updatedPageNo ? `&page=${updatedPageNo}` : "";
-    const searchUrl = ` https://openlibrary.org/search.json?q=${query}${pageNumber}`;
+  getSearchResults = (query, pageNo = 1) => {
+    const searchUrl = ` https://openlibrary.org/search.json?q=${query}&page=${pageNo}`;
 
     // Create a token
     // check if this.cancel has any value, if it has, cancel the previous request
@@ -47,14 +46,14 @@ class SearchForm extends Component {
 
     // if not, create a new token and store inside of the axios cancel token
     this.cancel = axios.CancelToken.source();
-
+    this.setState({ loading: true, message: "" });
     axios
       .get(searchUrl, {
         cancelToken: this.cancel.token,
       })
       .then((res) => {
         const total = res.data.numFound; // get the total number of pages returned
-        const totalPagesCount = this.getPageCount(total, 20); //the denominator is 5. meaning I want to show 5 results per page
+        const totalPagesCount = this.getPageCount(total, 20);
 
         const resultNotFoundMessage = !res.data.docs.length
           ? "There are no more search results. Please try a new search."
@@ -65,15 +64,15 @@ class SearchForm extends Component {
           message: resultNotFoundMessage,
           totalResults: total,
           totalPages: totalPagesCount,
-          currentPageNo: updatedPageNo,
+          currentPageNo: pageNo,
           loading: false,
         });
       })
       .catch((error) => {
-        if (axios.isCancel(error) || error) {
+        if (error && error.message) {
           this.setState({
             loading: false,
-            message: "Please wait while we get the data...",
+            message: "Page not found",
           });
         }
       });
@@ -99,8 +98,8 @@ class SearchForm extends Component {
         totalResults: 0,
       });
     } else {
-      this.setState({ query, loading: true, message: "" }, () => {
-        this.getSearchResults(1, query);
+      this.setState({ query }, () => {
+        this.getSearchResults(query);
       });
     }
   };
@@ -108,16 +107,14 @@ class SearchForm extends Component {
   // fn to handle pagination
   handlePagination = (type, event) => {
     event.preventDefault();
-    // Prev is if user is on page 2, and needs to go to page 1, then this.state.currentPageNo - 1, else Next - this.state.currentPageNo + 1
+    // Previous is if user is on page 2, and needs to go to page 1, then this.state.currentPageNo - 1, else Next - this.state.currentPageNo + 1
     const updatedPageNo =
-      "prev" === type
+      type === "prev"
         ? this.state.currentPageNo - 1
         : this.state.currentPageNo + 1;
 
     if (!this.state.loading) {
-      this.setState({ loading: true, message: "" }, () => {
-        this.getSearchResults(updatedPageNo, this.state.query);
-      });
+      this.getSearchResults(this.state.query, updatedPageNo);
     }
   };
 
@@ -140,7 +137,9 @@ class SearchForm extends Component {
             .filter((result) => {
               // remove cards that do not have images, author name and publish year
               return (
-                result.cover_i && result.first_publish_year && result.author_name
+                result.cover_i &&
+                result.first_publish_year &&
+                result.author_name
               );
             })
             .map((result) => {
@@ -164,7 +163,7 @@ class SearchForm extends Component {
 
   render() {
     const { query, loading, message, currentPageNo, totalPages } = this.state;
-    const showPrevLink = query && 1 < currentPageNo;
+    const showPrevLink = query && currentPageNo > 1;
     const showNextLink = query && totalPages > currentPageNo;
 
     return (
@@ -178,7 +177,7 @@ class SearchForm extends Component {
                   type="text"
                   name="query"
                   value={query}
-                  id="search-input"
+                  id="searchInput"
                   placeholder=" (ex. The Great Gatsby)"
                   onChange={this.handleOnInputChange}
                 />
@@ -189,9 +188,9 @@ class SearchForm extends Component {
                 <label htmlFor="sort">
                   Sort Alphabetically or Recently published
                 </label>
-                <select name="sort" id="" onChange={this.handleSort}>
+                <select name="sort" id="sort" onChange={this.handleSort}>
                   <option value="" default>
-                    Select one
+                    Click to select
                   </option>
                   <option value="alphabet">Alphabetically</option>
                   <option value="recentlyPublished">Recently Published</option>
@@ -207,7 +206,7 @@ class SearchForm extends Component {
           <img
             src={Loader}
             className={`searchLoading ${loading ? "show" : "hide"}`}
-            alt="Search loader"
+            alt="Searching"
           />
 
           {/* Page navigation */}
